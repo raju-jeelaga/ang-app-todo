@@ -1,0 +1,56 @@
+<h6>Observable Creation</h6>
+<br />
+<br />
+<h6>From Event</h6>
+<div id="cstm-event"></div>
+<ul>
+  <li *ngFor="let event of fromEvent">{{ event }}</li>
+</ul>
+<br />
+<br />
+<h6>Ajax</h6>
+<ul>
+  <li *ngFor="let event of ajaxLogs">{{ event }}</li>
+</ul>
+<br />
+<br />
+<h6>interval</h6>
+<ul>
+  <li *ngFor="let event of intervalLogs">{{ event }}</li>
+</ul>
+<br />
+<br />
+<h6>from array</h6>
+<ul>
+  <li *ngFor="let event of fromArrayLogs">{{ event }}</li>
+</ul>
+<br />
+<br />
+<h6>Of Method</h6>
+<ul>
+  <li *ngFor="let event of ofArrayLogs">{{ event }}</li>
+</ul>
+<br />
+<br />
+<h6>Custom Observable Create</h6>
+<ul>
+  <li *ngFor="let event of customObservableLogs">{{ event }}</li>
+</ul>
+<br />
+<br />
+<h6>Custom Observable with New</h6>
+<ul>
+  <li *ngFor="let event of customObservableLogs2">{{ event }}</li>
+</ul>
+<br />
+<br />
+<h6>Custom Observable with Error Method</h6>
+<ul>
+  <li *ngFor="let event of customObservableLogs3">{{ event }}</li>
+</ul>
+<br />
+<br />
+<h6>Custom Observable with Array Method</h6>
+<ul>
+  <li *ngFor="let event of customArrayObservable">{{ event }}</li>
+</ul>

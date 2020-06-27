@@ -1,0 +1,38 @@
+<h6><b>Two way data binding without using NgModel Directive</b></h6>
+<div>
+  Two way data binding on form elements, using property and event binding:
+</div>
+<div>Current Hero name is {{ permeneantGod.name }}</div>
+<input
+  [value]="permeneantGod.name"
+  (input)="permeneantGod.name = $event.target.value"
+/><br /><br />
+<button (click)="checkGodName()">Check Hero Name</button>
+<br />
+<br />
+<br />
+<label>Select Hero name:</label>
+<select
+  [value]="permeneantGod.name"
+  (change)="permeneantGod.name = $event.target.value"
+>
+  <option value="">Select Name</option>
+  <option value="Raju">Raju</option>
+  <option value="Jesus">Jesus</option>
+  <option value="Rithvik">Rithvik</option>
+</select>
+<br /><br />
+<h6><b>Two way data binding using NgModel Directive</b></h6>
+<input [(ngModel)]="permeneantGod.name" />
+<br /><br />
+<h6>Two way data binding using bindon syntax</h6>
+<input bindon-ngModel="permeneantGod.name" />
+<br /><br />
+<div>NgModel - Splitted into property and Event binding</div>
+<input
+  [ngModel]="permeneantGod.name"
+  (ngModelChange)="permeneantGod.name = $event"
+/>
+<br /><br />
+<div>NgModel - manipulate the value on change</div>
+<input [ngModel]="permeneantGod.name" (ngModelChange)="setUpperCase($event)" />

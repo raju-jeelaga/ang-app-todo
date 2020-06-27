@@ -1,0 +1,57 @@
+<h6>Subjects</h6>
+<br />
+<app-colorfull-text></app-colorfull-text>
+<br />
+<app-color-input></app-color-input>
+<h6>
+  Subjects works with only one execution context(Singleton) and Multicast the
+  values
+</h6>
+<div>numbersObservable$ logs</div>
+<ul>
+  <li *ngFor="let log of observableLogs">{{ log }}</li>
+</ul>
+<br />
+<br />
+<div>numbersSubject$ logs</div>
+<ul>
+  <li *ngFor="let log of subjectLogs">{{ log }}</li>
+</ul>
+<br />
+<br />
+<div>numbersSubjectObservable$ logs</div>
+<ul>
+  <li *ngFor="let log of subjectObservableLogs">{{ log }}</li>
+</ul>
+<br />
+<br />
+<div>Subject as both observable and observer</div>
+<ul>
+  <li *ngFor="let log of subjectNamesLogs">{{ log }}</li>
+</ul>
+<br />
+<br />
+<h6>Different types of Subjects</h6>
+<br />
+<div>Regular Subject logs</div>
+<ul>
+  <li *ngFor="let log of regularSubjectLogs">{{ log }}</li>
+</ul>
+<br />
+<br />
+<div>Behaviour Subject logs</div>
+<ul>
+  <li *ngFor="let log of behaviourSubjectLogs">{{ log }}</li>
+</ul>
+<br />
+<br />
+<div>Replay Subject logs</div>
+<ul>
+  <li *ngFor="let log of replySubjectLogs">{{ log }}</li>
+</ul>
+<br />
+<br />
+<div>Async Subject logs</div>
+<ul>
+  <li *ngFor="let log of asyncSubjectLogs">{{ log }}</li>
+</ul>

@@ -1,0 +1,9 @@
+.index-list li{
+    list-style-type: none;
+}
+.nested-list li::before {
+    content: "- ";
+}
+ul.index-list li.heading {
+    margin-top: 20px;
+}

@@ -1,0 +1,199 @@
+<h6><b>Interpolation Binding</b></h6>
+<br />
+<h6>The Real God Name is {{ myGod.name }}</h6>
+<br />
+<h6>The Real God Name is {{ myGod.age }}</h6>
+<br />
+<h3>
+  <img src="{{ imageUrl }}" style="height: 50px;" />
+  <img src="./assets/images/hero.jpg" style="height: 50px;" />
+  <img src="../../../assets/images/heor2.png" style="height: 50px;" />
+</h3>
+<br />
+<p>The Sum of 1 + 1 is {{ 1 + 1 }}</p>
+<br />
+<p>The Sum of 1 + 1 is not equal to {{ 1 + 1 + getVal() }}</p>
+<hr />
+<h6><b>Property Binding</b></h6>
+<br />
+<h3>
+  <img [src]="imageUrl" style="height: 50px;" />
+  <img bind-src="imageUrl" style="height: 50px;" />
+</h3>
+<button [disabled]="fobiddenChanged">Cancel</button>
+<br /><br />
+<app-hero-details [hero]="myGod"></app-hero-details><br />
+<app-hero-details hero="{{ myGod }}"></app-hero-details>
+<br />
+<button (click)="updateHero()">Update hero</button>
+
+<br /><br />
+<div ngClass [ngClass]="classConditions">
+  ngClass Condition Based class Names
+</div>
+
+<br />
+<h6>Usign function call in bindings:</h6>
+<img src="{{ getHeroImage() }}" style="height: 50px;" />
+<img [src]="getHeroImage()" style="height: 50px;" />
+<br /><br />
+<app-hero-details hero="myGod"></app-hero-details>
+<br /><br />
+<h6>Script tags in property bindings:</h6>
+<p>
+  <span>"{{ myTitle }}" is the <i>interpolated</i> evil title.</span>
+</p>
+<p>
+  "<span [innerHTML]="myTitle"></span>" is the <i>property bound</i> evil title.
+</p>
+
+<br />
+<hr />
+<h6>Attribute, class, and style bindings</h6>
+
+<br />
+<h6>Attribute data</h6>
+
+<input type="text" id="input1" value="Raju" placeholder="Jeelaga" />
+<br /><br />
+
+<table class="table table-bordered text-denter">
+  <tr>
+    <td id="tdId" colspan="2">One</td>
+  </tr>
+  <tr>
+    <td>Three - Four</td>
+    <td>Three - Four</td>
+  </tr>
+</table>
+
+<br />
+
+<div>Un-comment below binding to get error</div>
+<table class="table table-bordered text-denter">
+  <tr>
+    <!-- <td id="tdId" colspan="{{ columnNumber }}">TWO</td> -->
+  </tr>
+  <tr>
+    <td>Three - Four</td>
+    <td>Three - Four</td>
+  </tr>
+</table>
+
+<br />
+<h6>Attribute data</h6>
+<table class="table table-bordered text-denter">
+  <tr>
+    <td id="tdId" [attr.colspan]="columnNumber">Three</td>
+  </tr>
+  <tr>
+    <td>Three - Four</td>
+    <td>Three - Four</td>
+  </tr>
+</table>
+
+<br />
+<h6>Class bindings</h6>
+<div>I. Reset/override all class names with class property binding</div>
+<div class="class bind static" [class]="classBind">Class Bind 1</div>
+<br />
+
+<div>II. Toggle a single class</div>
+<div [class.special]="special">This is my Special Class</div>
+<div [class.special]="!special">This is my Special Class</div>
+<div [class.very]="special" [class.special]="special">
+  This is my Very Special Class
+</div>
+<div class="not" [class.very]="special" [class.special]="special">
+  This is not my Very Special Class
+</div>
+<br />
+<div>III. Toggle Multiple classes(ngClass directive)</div>
+<div [ngClass]="classConditions">Mulitiple Class Binding</div>
+<div class="anotherclass" [ngClass]="classConditions">
+  Mulitiple Class and Another class Name Binding
+</div>
+<br />
+
+<h6>Style bindings</h6>
+<button [style.color]="aded ? 'red' : 'green'">Save Button</button><br /><br />
+<button [style.background-color]="bine ? 'gray' : 'yellow'">
+  Save Button</button
+><br /><br />
+<button
+  [style.color]="aded ? 'red' : 'blue'"
+  [style.background-color]="aded ? 'green' : 'gray'"
+>
+  Click Here</button
+><br /><br />
+<button [style.font-size.px]="aded ? 20 : 15">Big1111</button>
+<br /><br />
+<button [style.fontSize.px]="aded ? 25 : 35">Camel Case method</button>
+<br /><br />
+<div [ngStyle]="currentStyles">This is my Own Content</div>
+<br />
+<hr />
+<h6>Event bindings</h6>
+<button (click)="onSave($event)">Save</button><br /><br />
+<button on-click="onSave($event)">Click</button>
+<br /><br />
+<input type="text" placeholder="123456" (keypress)="onSave($event)" />
+<br /><br />
+
+<hr />
+<h6><b>Template Expression Operators</b></h6>
+<br />
+<h6>Pipe Operator</h6>
+<div>Hero Name: {{ myGod.name | uppercase }}</div>
+<div>
+  <pre>{{ myGod | json }}</pre>
+</div>
+<br />
+
+<h6>Safe Navigation Operator:</h6>
+<div>The null hero's name is {{ nullHero?.name }}</div>
+<br />
+<hr />
+<h6><b>Template Statements</b></h6>
+<div>Template statement allows assignment operator '='</div>
+<div>Hero Name : {{ myGod.name }}</div>
+<button (click)="myGod.name = 'David'">Click</button>
+<br /><br />
+<div>We can chain the template statements</div>
+<div><button (click)="myGod.name = 'David'; onSave($event)">Save</button></div>
+<br />
+<hr />
+<h6><b>Template reference variables ( #hero )</b></h6>
+<form ngSubmit="onSubmit(heroForm)" ngForm #heroRef="ngForm" id="hero-form">
+  <div class="form-group">
+    <label>Phone: {{ phoneRef.value }}</label>
+    <br />
+    <input id="form-control" name="phone" #phoneRef [(ngModel)]="phone" />
+  </div>
+  <div class="form-group">
+    <label>Name: {{ name.value }}</label>
+    <input
+      class="form-control"
+      name="name"
+      [(ngModel)]="myGod.name"
+      #name="ngModel"
+      required
+      minlength="4"
+    />
+  </div>
+
+  <div>
+    <pre>{{ name.errors | json }}</pre>
+  </div>
+
+  <div *ngIf="name.invalid">
+    <div *ngIf="name.errors.required">
+      Name is Required
+    </div>
+    <div *ngIf="name.errors.minlength">
+      Name must be atleast 4 Char
+    </div>
+  </div>
+  <br />
+  <button type="submit" [disabled]="!heroRef.form.valid">Submit</button>
+</form>

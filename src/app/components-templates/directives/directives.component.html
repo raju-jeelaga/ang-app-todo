@@ -1,0 +1,101 @@
+<h6>Attribute Directives</h6>
+<h6>appHighlight - With static color:</h6>
+<p appHighlight>Highlight me!</p>
+<br />
+<h6>appHighlightV1 - Respond to user-initiated events:</h6>
+<p appHighlightV1>Highlight me!</p>
+<br />
+<h6>
+  appHighlightV2 - Pass values into the directive with an @Input data binding:
+</h6>
+<p appHighlightV2>
+  highlightColor is not passed. So, It would be highlighted with default
+  color(yellow) specified in directive.
+</p>
+<p appHighlightV2 [highlightColor]="color">
+  Highlight me in the color specified by component(green)
+</p>
+<br />
+<h6>appHighlightV3 - Bind to an @Input alias:</h6>
+<p appHighlightV3 [appHighlightV3]="color">
+  Highlight me - Used both property and directive names
+</p>
+<p appHighlightV3 [appHighlightV3]="color">
+  Highlight me - Used both property and directive names
+</p>
+
+<br />
+<hr />
+<h6><b>Structural Directives</b></h6>
+<h6>*ngIf</h6>
+<div *ngIf="currentHero" class="name">{{ currentHero.name }}</div>
+<div [style.display]="currentHero ? 'block' : 'none'">
+  {{ currentHero.name }}
+</div>
+<br />
+
+<!-- <div *ngIf="nullHero" class="name">{{ nullHero.name }}}</div>
+<div [style.block]="nullHero ? 'block' : 'none'">{{ nullHero?.name }}</div> -->
+<br />
+<h6>*ngFor</h6>
+<div>*ngFor With Index:</div>
+<div *ngFor="let hero of heros; let i = index">
+  {{ i + 1 }} - {{ hero.name }}
+</div>
+<br />
+<div>*ngFor without trackBy:</div>
+<div *ngFor="let hero of heros">({{ hero.id }}) {{ hero.name }}</div>
+<br />
+<div>*ngFor with trackBy:</div>
+<div *ngFor="let hero of heros; travkBy: trackByheros">
+  ({{ hero.id }}) {{ hero.name }}
+</div>
+<br />
+<button class="btn btn-primary" (click)="updateTheNames()">
+  Update The Names
+</button>
+&nbsp; &nbsp;
+<button class="btn btn-primary" (click)="updateTheIds()">Update The Ids</button>
+<br />
+<br />
+<h6>ng-template</h6>
+<p>hello!</p>
+<ng-template>
+  <p>Hip</p>
+</ng-template>
+<p>World</p>
+
+<br />
+<h6>ng-container</h6>
+<p>
+  Hello my name is
+  <ng-container>{{ currentHero.name }}</ng-container>
+  and i am a good boy
+</p>
+<br />
+<h6>ng-container to group elements</h6>
+<label>with Span</label>
+<select [(ngModel)]="currentHero">
+  <option value="">Select hero</option>
+  <span *ngFor="let h of heros">
+    <span *ngIf="h.power > 20">
+      <option [ngValue]="h">{{ h.name }}</option>
+    </span>
+  </span>
+</select>
+<br />
+<br />
+<label>With ng-container </label>
+<select [(ngModel)]="currentHero">
+  <option value="">Select Hero</option>
+  <ng-container *ngFor="let h of heros">
+    <ng-container *ngIf="h.power > 20">
+      <option [ngValue]="h">{{ h.name }}</option>
+    </ng-container>
+  </ng-container>
+</select>
+<br />
+<br />
+<h6>Custom structural directive: appReverseIf</h6>
+<div *appReverseIf="condition">This is Reverse If condition</div>
+<div *appReverseIf="!condition">This is not visible condition</div>

@@ -1,0 +1,9 @@
+<h6>My Title Name is {{title}}</h6>
+<h6>My Little hero is {{mylittle}}</h6>
+<ul>
+    <li *ngFor=" let follower of followers">
+        {{ follower }}
+    </li>
+</ul>
+
+<p *ngIf="followers.length > 3">There are Many followers</p>

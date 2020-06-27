@@ -1,0 +1,67 @@
+<h6>Pipes</h6>
+<div>Birthday</div>
+<div>Without Pipe : {{ birthday }}</div>
+<div>With pipe : {{ birthday | date }}</div>
+<div>With Pipe and Paramter : {{ birthday | date: "MM / dd / yy" }}</div>
+<div>Json Pipe</div>
+<pre>
+    {{ heros | json }}
+</pre>
+
+<br />
+
+<h6>CustomPipes</h6>
+<div>5 power 6 is {{ 5 | exponentialStrength: "6" }}</div>
+<div>
+  The Prefered name of {{ name }} is {{ name | formatName: "middle":"last" }}
+</div>
+<div>
+  The Prefered name of {{ name }} is {{ name | formatName: "first":"middle" }}
+</div>
+<div>
+  The Prefered name of {{ name }} is {{ name | formatName: "last":"first" }}
+</div>
+<br />
+<h6>Pure and Impure Pipes</h6>
+<label>Add hero by pushing object</label>
+<div style="margin: 10px 0px;">
+  <label>Add hero by pushing object:</label> &nbsp;&nbsp;
+  <input
+    type="text"
+    [(ngModel)]="newHero.name"
+    #heroName
+    (keyup.enter)="pushHero(heroName.value, can.value)"
+    placeholder="Type name and hit enter"
+  />
+  &nbsp;&nbsp; <input type="checkbox" [(ngModel)]="newHero.canFly" #can /> Can
+  Fly
+</div>
+
+<div style="margin: 10px 0px;">
+  <label>Add hero by reference change:</label> &nbsp;&nbsp;
+  <input
+    type="text"
+    [(ngModel)]="newHero.name"
+    #heroName2
+    (keyup.enter)="concatHero(heroName2.value, can2.value)"
+    placeholder="Type name and hit enter"
+  />
+  &nbsp;&nbsp; <input type="checkbox" [(ngModel)]="newHero.canFly" #can2 /> Can
+  Fly
+</div>
+
+<div>Heroes with flyingHeroesPure pipe</div>
+<ul>
+  <li *ngFor="let hero of heros">{{ hero.name }}</li>
+</ul>
+<br />
+<div>Heroes with flyingHeroesImPure pipe</div>
+<ul>
+  <li *ngFor="let hero of heros">{{ hero.name }}</li>
+</ul>
+
+<h6>Custom Pipes</h6>
+<input type="text" value="" #myName />
+<button type="button" (click)="add(myName.value)">Add</button>
+
+<div>Country Names: {{ country | customPipe }}</div>

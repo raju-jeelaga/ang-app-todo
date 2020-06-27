@@ -1,0 +1,21 @@
+<h6>ngOnChanges(), ngOnInit(), ngDoCheck(), ngOnDestroy</h6>
+<br />
+<button class="btn btn-primary" (click)="created = !created">
+  {{ !created ? "Created" : "Destroy" }} Component
+</button>
+&nbsp;
+<button class="btn btn-primary" *ngIf="created" (click)="changeCurrentUser()">
+  Change Current User</button
+>&nbsp;
+<button
+  class="btn btn-primary"
+  *ngIf="created"
+  (click)="changeCurrentUserName()"
+>
+  Change Current User Name
+</button>
+<br /><br />
+
+<input type="text" [(ngModel)]="currentUser.name" />
+<br /><br />
+<app-user-cycle *ngIf="created" [user]="currentUser"></app-user-cycle>

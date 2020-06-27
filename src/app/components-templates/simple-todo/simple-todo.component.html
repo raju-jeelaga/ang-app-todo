@@ -1,0 +1,6 @@
+<div>Todo List:</div>
+<app-todo-detail *ngFor="let todo of todos" [todo]="todo"></app-todo-detail>
+
+<br />
+<div>User Actions:</div>
+<div *ngFor="let action of userActions">{{ action }}</div>
